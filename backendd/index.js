@@ -28,6 +28,7 @@ app.get("/",(req,resp)=>
 app.post("/login",async(req,resp)=>
 {
     resp.header("Access-Control-Allow-Origin", "*"); 
+  
     let data=new test(req.body);
     let result=await data.save();
     result=result.toObject();
