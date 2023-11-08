@@ -4,20 +4,14 @@ const test=require("./db/user")
 const cors=require("cors");
 
 const app=express();
-app.use(cors(
-    {
-         origin: ["https://fullstack-frontend-phi.vercel.app"],
-    methods: ["POST", "GET"],
-     credentials: true
-    }
-));
+app.use(cors());
+  // {
+  //        origin: ["https://fullstack-frontend-phi.vercel.app"],
+  //   methods: ["POST", "GET"],
+  //    credentials: true
+  //   }
 app.use(express.json());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://fullstack-frontend-phi.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-})
+
 
 app.get("/",(req,resp)=>
 {    
@@ -37,8 +31,11 @@ app.post("/login",async(req,resp)=>
     resp.send(result);
 
 })
-
-app.listen(5000 , ()=>
-{
-    console.log("good");
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log("Server is running on port " + port);
 });
+// app.listen(5000 , ()=>
+// {
+//     console.log("good");
+// });
