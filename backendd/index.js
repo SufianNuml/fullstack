@@ -19,13 +19,15 @@ app.use(cors(
     }
 ));
 app.get("/",(req,resp)=>
-{
-    resp.json("hello");
+{    
+     resp.header("Access-Control-Allow-Origin", "*");
+     resp.json("hello");
 })
 
 
 app.post("/login",async(req,resp)=>
 {
+    resp.header("Access-Control-Allow-Origin", "*"); 
     let data=new test(req.body);
     let result=await data.save();
     result=result.toObject();
