@@ -12,7 +12,7 @@ export default function SingUp() {
     {
         e.preventDefault();
         console.log(name,email,password);
-        axios.post("http://localhost:5000/login",{name,email,password})
+        axios.post("https://fullstack-api-seven.vercel.app/login",{name,email,password})
         .then(result=> {console.log(result)
             // navigate("/login")
             })
